@@ -1,0 +1,68 @@
+<div class="main">
+    <div class="mat-elevation-z8" class="table-container">
+      <div class="upper-portion">
+        <div class="button-add">
+          <!--Add New Button-->
+          <a routerLink='add-vaccine-admin'><button mat-button color="primary" mat-raised-button><mat-icon>data_saver_on</mat-icon> New Vaccine Administrator</button></a>
+        </div>
+        <div class="search">
+          <!--filter input-->
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Search...</mat-label>
+            <input matInput type="text" [(ngModel)]="value" (keyup)="filterData($event)" #input>
+            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <!--data source taken from API-->
+        <table mat-table matSort [dataSource]="dataSource">
+          <!--Row For ID-->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>ID</th>
+            <td style="text-align: center;" mat-cell *matCellDef="let element">{{element.id}}</td>
+          </ng-container>
+        
+          <!--Row For HealthFacility-->
+          <ng-container matColumnDef="healthfacility">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Health Facility</th>
+            <td mat-cell *matCellDef="let element">{{element.healthFacility}}</td>
+          </ng-container>
+        
+          <!--Row For Vaccinator-->
+          <ng-container matColumnDef="vaccinator">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Vaccinator</th>
+            <td mat-cell *matCellDef="let element">{{element.vaccinator}}</td>
+          </ng-container>
+        
+          <!--Row For Address-->
+          <ng-container matColumnDef="address">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Address</th>
+            <td mat-cell *matCellDef="let element">{{element.address}}</td>
+          </ng-container>
+        
+          <!--Row For Actions-->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element"><a routerLink="edit-vaccine-admin/{{element.id}}"><button title="Edit" mat-button mat-raised-button><mat-icon color="primary">edit</mat-icon></button></a>
+                                                  <button (click)="deleteConfirm(element.id)" title="Delete" mat-button mat-raised-button><mat-icon color="warn">delete</mat-icon></button>
+                                                  <a ><button title="View" mat-button mat-raised-button><mat-icon color="accent">input</mat-icon></button></a>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+          <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+        <mat-paginator #paginator [pageSizeOptions]="[1, 10, 20]" [pageSize]="20" showFirstLastButtons>
+        </mat-paginator>
+
+      </div> 
+    </div>
+</div>

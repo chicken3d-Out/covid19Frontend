@@ -1,0 +1,57 @@
+.main {
+    padding: 0;
+    margin: 0;
+    
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url('../../assets/404bg.svg');
+    aspect-ratio: 900/600;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Layout*/
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 100px auto 1fr;
+}
+.main .title {
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 3rem;
+    color: #eee;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main .title marquee {
+    width: 15%;
+}
+
+.main .gif-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.main .searching {
+    width: 580px;
+    height: 400px;
+    background-image: url('../../assets/finding.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.main .navigate {
+    margin: 30px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.main .navigate button {
+    padding: 5px 10px;
+    background-color: rgb(43, 184, 43);
+}

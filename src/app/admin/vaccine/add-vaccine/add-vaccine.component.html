@@ -1,0 +1,78 @@
+<div class="main">
+    <div class="content-container">
+        <mat-card class="header">
+            <p class="header-left">Add Vaccine<mat-icon>add_circle</mat-icon></p>
+            <p class="header-right">Rural Health Unit<mat-icon>local_hospital</mat-icon></p>
+        </mat-card>
+        <mat-card class="body">
+            <mat-card-title>Vaccine Info</mat-card-title>
+            <form #AddVaccine="ngForm" class="form-grid" (ngSubmit)="onSubmit(AddVaccine)">
+                <div class="form-container">
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="vaccinename">Vaccine Name</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Vaccine Name</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="vaccineName" required
+                                    name="vaccineName" #vaccineName="ngModel" ngModel>
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="vaccineName.valid || vaccineName.pristine" class="alert alert-danger">
+                                Vaccine Name is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Stock</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Stock</mat-label>
+                                    <input type="number" matInput #stock="ngModel" maxlength="9" matInput class="ng-untouched ng-pristine ng-valid" 
+                                    name="stock" id="stock" placeholder="ex. 100000" required ngModel>
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="stock.valid || stock.pristine" class="alert alert-danger">
+                                Stock is required!
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="manufacturer">Manufacturer</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Manufacturer</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="manufacturer" required
+                                    name="manufacturer" #manufacturer="ngModel" ngModel>
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="manufacturer.valid || manufacturer.pristine" class="alert alert-danger">
+                                Manufacturer is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="efficacyrate">Efficacy Rate</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Efficacy Rate</mat-label>
+                                    <input type="text" matInput #efficacyRate="ngModel" minlength=2 maxlength=2 matInput class="ng-untouched ng-pristine ng-valid" 
+                                    name="efficacyRate" id="efficacyRate" placeholder="ex. 85" required ngModel>
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="efficacyRate.valid || efficacyRate.pristine" class="alert alert-danger">
+                                Efficacy Rate is required!
+                            </div>  
+                        </div>
+                        <div *ngIf="duplicateVaccine">
+                            <div class="alert alert-danger">Vaccine is already in the records! Choose another one</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button type="submit" *ngIf="AddVaccine.form.valid" mat-button color="primary" mat-raised-button>Register</button>
+                </div>
+            </form>
+          </mat-card>
+    </div>
+</div>
+

@@ -1,0 +1,84 @@
+<div class="main-container">
+    <mat-toolbar class="toolbar">
+        <div class="home-title">
+            <mat-icon>home</mat-icon>
+            <span>COVID-19-Vaccine Information System</span>
+        </div>
+        <div class="contact-info">
+            <div class="op1">
+                <mat-icon>contact_support</mat-icon>
+                <div>About</div>
+            </div>
+            <div class="op2">
+                <mat-icon>phone_in_talk</mat-icon>
+                <div>Contact Us</div>
+            </div>  
+        </div>
+    </mat-toolbar>
+    <div class="main">
+        <div class="banner-container">
+            <mat-card class="banner-left">
+                <div>
+                    Help Stop The Spread of the <b>Virus</b><br>
+                </div>
+                <div>
+                    Get <span>VACCINATED!</span>
+                </div>
+            </mat-card>
+            <mat-card class="banner-right">
+                <div class="welcome">
+                    Login to your account.
+                </div>
+                <div class="alert alert-danger" *ngIf="credentials">
+                    Invalid Username or Password.
+                </div>
+                <div class="form">
+                    <form class="con" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+                        <div class="form-group">
+                            <label for="usernmae">Username</label>
+                            <div class="field">
+                                <mat-icon>person</mat-icon>
+                                <mat-form-field>
+                                    <mat-label>Username</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="name" required
+                                    name="username" #username="ngModel" ngModel>
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                                Username is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="field">
+                                <mat-icon>vpn_key</mat-icon>
+                                <mat-form-field>
+                                    <mat-label>Password</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'" class="ng-untouched ng-pristine ng-valid" id="password" required
+                                    name="password" #password="ngModel" ngModel>
+                                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div> 
+                            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                                Password is required!
+                            </div>  
+                        </div>
+                        <div class="con1">
+                            <button type="submit" *ngIf="loginForm.form.valid" mat-button color="primary" mat-raised-button>Login</button>
+                        </div>
+                        <div class="alert alert-warning" *ngIf="loginForm.form.invalid && !credentials">
+                            Fill Out the Username and Password First!
+                        </div>   
+                    </form>
+                </div>
+                
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+
+
+

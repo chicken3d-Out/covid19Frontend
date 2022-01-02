@@ -1,0 +1,59 @@
+<mat-drawer-container class="main-container">
+    <mat-drawer class="sidenav" #drawer mode="side">
+        <div class="side-content">
+            <div class="contentHeader">
+                <div class="bar"></div>
+                <div class="header">
+                    <div><mat-icon>health_and_safety</mat-icon></div>
+                    <div><b>Rural Health Unit</b></div>
+                </div>
+            </div>
+            <a class="content" routerLink="/dashboard-view/overview-view" (click)="currentNavigation('Overview')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>analytics</mat-icon></div>
+                    <div>Overview</div>
+                </div> 
+            </a>
+            <a class="content" routerLink="/dashboard-view/first-dose-view" (click)="currentNavigation('First Dose')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>looks_one</mat-icon></div>
+                    <div>First Dose</div>
+                </div>
+            </a>
+            <a class="content" routerLink="/dashboard-view/second-dose-view" (click)="currentNavigation('Second Dose')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>looks_two</mat-icon></div>
+                    <div>Second Dose</div>
+                </div>
+            </a>
+            <a class="content" routerLink="/dashboard-view/statistics-view" (click)="currentNavigation('Statistics')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>trending_up</mat-icon></div>
+                    <div>Statistics</div>
+                </div>
+            </a>
+            <a class="content" routerLink="/dashboard-view/reservation-view" (click)="currentNavigation('Reservation')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>fact_check</mat-icon></div>
+                    <div>Reservation</div>
+                </div>
+            </a>
+        </div>
+    </mat-drawer>
+    <mat-toolbar class="toolbar">
+        <div>
+            <button type="button" mat-button (click)="drawer.toggle()">
+                <mat-icon class="ham">view_headline</mat-icon>
+            </button>
+            <span>COVID-19-Vaccine Information System / </span>
+            <span class="section">{{currentNav}}</span>
+        </div>
+    </mat-toolbar>
+    <div class="contents">
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>
+
+
+
+

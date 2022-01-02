@@ -1,0 +1,80 @@
+<div class="main">
+    <div class="content-container">
+        <mat-card class="header">
+            <p class="header-left">Edit Vaccine<mat-icon>drive_file_rename_outline</mat-icon></p>
+            <p class="header-right">Rural Health Unit<mat-icon>local_hospital</mat-icon></p>
+        </mat-card>
+        <mat-card class="body" *ngFor="let details of vaccine">
+            <mat-card-title>Vaccine Info</mat-card-title>
+            <form #EditVaccine="ngForm" class="form-grid">
+                <div class="form-container">
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="vaccinename">Vaccine Name</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Vaccine Name</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="vaccinename" required
+                                    name="vaccinename" #vaccinename="ngModel" [(ngModel)]="details.vaccineName">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="vaccinename.valid || vaccinename.pristine" class="alert alert-danger">
+                                Vaccine Name is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Stock</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Stock</mat-label>
+                                    <input type="number" matInput #stock="ngModel" maxlength="9" matInput class="ng-untouched ng-pristine ng-valid" 
+                                    name="stock" id="stock" placeholder="ex. 100000" required [(ngModel)]="details.stock">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="stock.valid || stock.pristine" class="alert alert-danger">
+                                Stock is required!
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="manufacturer">Manufacturer</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Manufacturer</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="manufacturer" required
+                                    name="manufacturer" #manufacturer="ngModel" [(ngModel)]="details.manufacturer">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="manufacturer.valid || manufacturer.pristine" class="alert alert-danger">
+                                Manufacturer is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="efficacyrate">Efficacy Rate</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Efficacy Rate</mat-label>
+                                    <input matInput #efficacyrate="ngModel" maxlength="5" matInput class="ng-untouched ng-pristine ng-valid" 
+                                    name="efficacyrate" id="efficacyrate" placeholder="ex. 85" required [(ngModel)]="details.efficacyRate">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="efficacyrate.valid || efficacyrate.pristine" class="alert alert-danger">
+                                Efficacy Rate is required!
+                            </div>  
+                        </div>
+                        <div *ngIf="duplicateVaccine">
+                            <div class="alert alert-danger">Vaccine is already in the records! Choose another one</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button class="back" (click)="goBack()" mat-button color="warn" mat-raised-button>Back</button>
+                    <button class="save" (click)="save()" type="submit" *ngIf="EditVaccine.form.valid" mat-button color="primary" mat-raised-button>Save</button>
+                </div>
+            </form>
+          </mat-card>
+    </div>
+</div>
+
+

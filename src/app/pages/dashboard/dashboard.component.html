@@ -1,0 +1,83 @@
+<mat-drawer-container class="main-container">
+    <mat-drawer class="sidenav" #drawer mode="side">
+        <div class="side-content">
+            <div class="contentHeader">
+                <div class="bar"></div>
+                <div class="header">
+                    <div><mat-icon>health_and_safety</mat-icon></div>
+                    <div><b>Rural Health Unit</b></div>
+                </div>
+            </div>
+            <a class="content" routerLink="/dashboard/overview" (click)="currentNavigation('Overview')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>analytics</mat-icon></div>
+                    <div>Overview</div>
+                </div> 
+            </a>
+            <a class="content" routerLink="/dashboard/recipient" (click)="currentNavigation('Vaccine Recipient')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>face</mat-icon></div>
+                    <div>Vaccine Recipient</div>
+                </div>
+            </a>
+            <a class="content" routerLink="/dashboard/first-dose" (click)="currentNavigation('First Dose')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>looks_one</mat-icon></div>
+                    <div>First Dose</div>
+                </div>
+            </a>
+            <a class="content" routerLink="/dashboard/second-dose" (click)="currentNavigation('Second Dose')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>looks_two</mat-icon></div>
+                    <div>Second Dose</div>
+                </div>
+            </a>
+            <a class="content" routerLink="/dashboard/vaccine" (click)="currentNavigation('Vaccine')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>vaccines</mat-icon></div>
+                    <div>Vaccine</div>
+                </div>
+            </a>
+            <a class="content" routerLink="/dashboard/vaccine-administrator" (click)="currentNavigation('Vaccine Administrator')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>local_hospital</mat-icon></div>
+                    <div>Vaccine Administrator</div>
+                </div>
+            </a>
+            <a class="content" routerLink="/dashboard/reservation" (click)="currentNavigation('Reservation')" routerLinkActive="active-section">
+                <div class="icon-section">
+                    <div><mat-icon>fact_check</mat-icon></div>
+                    <div>Reservation</div>
+                </div>
+                <!--Add Route to fix error-->
+            </a>
+        </div>
+    </mat-drawer>
+    <mat-toolbar class="toolbar">
+        <div>
+            <button type="button" mat-button (click)="drawer.toggle()">
+                <mat-icon class="ham">view_headline</mat-icon>
+            </button>
+            <span>COVID-19-Vaccine Information System / </span>
+            <span class="section">{{currentNav}}</span>
+        </div>
+        <div class="logout-section">
+            <div class="admin-name">
+                <p>{{adminName}}</p>
+            </div>
+            <button mat-button [matMenuTriggerFor]="beforeMenu"><mat-icon>admin_panel_settings</mat-icon></button>
+            <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <button mat-menu-item routerLink="/dashboard/add-admin"><mat-icon>person_add_alt_1</mat-icon>Add Admin</button>
+            <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Log-Out</button>
+            </mat-menu>
+        </div>
+        
+    </mat-toolbar>
+    <div class="contents">
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>
+
+
+
+

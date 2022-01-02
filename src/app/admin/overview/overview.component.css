@@ -1,0 +1,196 @@
+.main {
+    width: 100%;
+    height: calc(100vh - 66px);
+    padding: 0 20px;
+
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 300px 1fr;
+}
+.main .top-section {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3,1fr);
+}
+.main .top-section .top-section-firstdose {
+    padding: 40px 15px;
+    color: #57524e;
+}
+/* FirstDose Section */
+.main .top-section .top-section-firstdose .firstdose {
+    height: 100%;
+    width: 100%;
+    background-color: #d5cddb;
+
+    border-radius: 30px;
+}
+.main .top-section .top-section-firstdose .seconddose {
+    height: 100%;
+    width: 100%;
+    background-color: #C8A4D4;
+
+    border-radius: 30px;
+}
+.main .top-section .top-section-firstdose .vaccine {
+    height: 100%;
+    width: 100%;
+    background-color: #b0b8db;
+
+    border-radius: 30px;
+}
+.main .top-section .top-section-firstdose .firstdose {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 280px 1fr;
+
+    padding: 20px 20px;
+}
+.main .top-section .top-section-firstdose .firstdose .firstdose-info {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: auto 1fr auto;
+}
+.main .top-section .top-section-firstdose .firstdose .firstdose-info .count {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 5rem;
+    font-weight: bold;
+    align-items: center;
+    padding: 15px 15px;
+}
+.main .top-section .top-section-firstdose .firstdose .firstdose-info span {
+    font-size: 2rem;
+}
+.main .top-section .top-section-firstdose .firstdose .icon {
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 0 25px 0 0;
+}
+.main .top-section .top-section-firstdose .firstdose mat-icon {
+    font-size: 5rem;
+    color:#475C7A;
+}
+/* End of FIrst Dose */
+/* Second Dose Section*/
+.main .top-section .top-section-firstdose .seconddose {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 280px 1fr;
+
+    padding: 20px 20px;
+}
+.main .top-section .top-section-firstdose .seconddose .seconddose-info {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: auto 1fr auto;
+}
+.main .top-section .top-section-firstdose .seconddose .seconddose-info .count {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 5rem;
+    font-weight: bold;
+    align-items: center;
+    padding: 15px 15px;
+}
+.main .top-section .top-section-firstdose .seconddose .seconddose-info span {
+    font-size: 1.8rem;
+}
+.main .top-section .top-section-firstdose .seconddose .icon {
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 0 25px 0 0;
+}
+.main .top-section .top-section-firstdose .seconddose mat-icon {
+    font-size: 5rem;
+    color:#475C7A;
+}
+/* End of Seconddose Css Section*/
+/* Start of Vaccine Section */
+.main .top-section .top-section-firstdose .vaccine {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 280px 1fr;
+
+    padding: 20px 20px;
+}
+.main .top-section .top-section-firstdose .vaccine .vaccine-info {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: auto 1fr auto;
+}
+.main .top-section .top-section-firstdose .vaccine .vaccine-info .count {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 5rem;
+    font-weight: bold;
+    align-items: center;
+    padding: 15px 15px;
+}
+.main .top-section .top-section-firstdose .vaccine .vaccine-info span {
+    font-size: 1.8rem;
+}
+.main .top-section .top-section-firstdose .vaccine .icon {
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 0 25px 0 0;
+}
+.main .top-section .top-section-firstdose .vaccine mat-icon {
+    font-size: 5rem;
+    color:#475C7A;
+}
+
+
+
+.main .bottom-section {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+}
+.main .bottom-section .vaDay {
+    padding:0px 5px 20px 0px;
+
+}
+.main .bottom-section .vaDay .data {
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: #eee;
+    border-radius: 30px;
+}
+.main .bottom-section .vaDay .data #canvas {
+    max-width: 600px;
+}
+.main .bottom-section .vaDay1 {
+    padding:0px 0px 20px 5px;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2,1fr);
+    gap:10px;
+    
+}
+.main .bottom-section .vaDay1 table {
+    width: 100%;
+}
+.main .bottom-section .vaDay1 table td {
+    text-align: center;
+}
+.main .bottom-section .vaDay1 .data {
+    background-color: #eee;
+    height: 100%;
+    width: 100%;
+
+    border-radius: 30px;
+}

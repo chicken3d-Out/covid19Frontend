@@ -1,0 +1,60 @@
+<div class="main">
+    <div class="content-container">
+        <mat-card class="header">
+            <p class="header-left">Add Vaccine<mat-icon>add_circle</mat-icon></p>
+            <p class="header-right">Rural Health Unit<mat-icon>local_hospital</mat-icon></p>
+        </mat-card>
+        <mat-card class="body">
+            <mat-card-title>Vaccine Info</mat-card-title>
+            <form #AddSecondDose="ngForm" class="form-grid" (ngSubmit)="onSubmit(AddSecondDose)">
+                <div class="form-container">
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="recipient">Recipient</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>recipient</mat-label>
+                                    <mat-select name="recipient" [(ngModel)]="selectedRecipient" required>
+                                        <mat-option *ngFor="let rec of recipientid" [value]="rec.id">{{rec.customid}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="vaccine">Vaccine</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>vaccine</mat-label>
+                                    <mat-select name="vaccine" [(ngModel)]="selectedVaccine" required>
+                                        <mat-option *ngFor="let vac of vaccineid" [value]="vac.id">{{vac.vaccineName}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="vaccineadmin">Vaccine Administrator</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>vaccineadmin</mat-label>
+                                    <mat-select name="vaccineadmin" [(ngModel)]="selectedVaccineAdmin" required>
+                                        <mat-option *ngFor="let va of vaccineadminid" [value]="va.id">{{va.healthFacility}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div *ngIf="duplicateRecipient">
+                            <div class="alert alert-danger">Recipient Has Already Recieved SecondDose!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button type="submit" *ngIf="AddSecondDose.form.valid" mat-button color="primary" mat-raised-button>Register</button>
+                </div>
+            </form>
+          </mat-card>
+    </div>
+</div>
+
+

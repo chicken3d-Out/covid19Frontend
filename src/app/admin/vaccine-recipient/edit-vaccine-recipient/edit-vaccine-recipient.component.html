@@ -1,0 +1,142 @@
+<div class="main">
+    <div class="content-container">
+        <mat-card class="header">
+            <p class="header-left">Edit Vaccine Recipient<mat-icon>edit</mat-icon></p>
+            <p class="header-right">Rural Health Unit<mat-icon>local_hospital</mat-icon></p>
+        </mat-card>
+        <mat-card class="body" *ngFor="let details of recipient">
+            <mat-card-title>Vaccine Recipient Info</mat-card-title>
+            <form #EditRecipientForm="ngForm" class="form-grid">
+                <div class="form-container">
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="firstname">First name</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Firstname</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="firstname" required
+                                    name="firstname" #firstname="ngModel" [(ngModel)]="details.firstname">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
+                                Firstname is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="middlename">Middle name</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Middlename</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="middlename" required
+                                    name="middlename" #middlename="ngModel" [(ngModel)]="details.middlename">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="middlename.valid || middlename.pristine" class="alert alert-danger">
+                                Middlename is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last name</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Lastname</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="lastname" required
+                                    name="lastname" #lastname="ngModel" [(ngModel)]="details.lastname">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="lastname.valid || lastname.pristine" class="alert alert-danger">
+                                Lastname is required!
+                            </div>  
+                        </div> 
+                    </div>
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Category</mat-label>
+                                    <mat-select name="category" [(ngModel)]="details.category">
+                                        <mat-option *ngFor="let cat of category" [value]="cat.category">{{cat.category}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Gender</mat-label>
+                                    <mat-select name="gender" [(ngModel)]="details.gender">
+                                        <mat-option *ngFor="let gen of gender" [value]="gen.gender">{{gen.gender}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Mobile Number</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Mobile Number</mat-label>
+                                    <input matInput #number="ngModel" maxlength="11" matInput class="ng-untouched ng-pristine ng-valid" 
+                                    name="number" id="number" placeholder="ex. 09*********" required [(ngModel)]="details.contactnum">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="number.valid || number.pristine" class="alert alert-danger">
+                                Mobile Number is required!
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Email</mat-label>
+                                    <input type="email" matInput class="ng-untouched ng-pristine ng-valid" id="email" 
+                                    name="email" #email="ngModel" placeholder="ex. myEmail@gmail.com" [(ngModel)]="details.email">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                                Email is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Address</mat-label>
+                                    <textarea matInput matInput class="ng-untouched ng-pristine ng-valid" id="address" 
+                                    name="address" #address="ngModel" placeholder="ex. Santa Fe Leyte" required [(ngModel)]="details.address">
+                                    </textarea>
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
+                                Address is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Birthday</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput type="date" name="birthday" id="birthday" #birthday="ngModel" required [(ngModel)]="details.birthday">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="birthday.valid || birthday.pristine" class="alert alert-danger">
+                                Birthday is required!
+                            </div>  
+                        </div>
+                        <div *ngIf="duplicateEmail">
+                            <div class="alert alert-danger">Email is already taken! Choose another one</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button class="back" (click)="goBack()" mat-button color="warn" mat-raised-button>Back</button>
+                    <button class="save" (click)="save()" type="submit" *ngIf="EditRecipientForm.form.valid" mat-button color="primary" mat-raised-button>Save</button>
+                </div>
+            </form>
+          </mat-card>
+    </div>
+</div>
+

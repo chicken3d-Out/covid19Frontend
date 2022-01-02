@@ -1,0 +1,67 @@
+<div class="main">
+    <div class="content-container">
+        <mat-card class="header">
+            <p class="header-left">Edit Vaccine Administrator<mat-icon>drive_file_rename_outline</mat-icon></p>
+            <p class="header-right">Rural Health Unit<mat-icon>local_hospital</mat-icon></p>
+        </mat-card>
+        <mat-card class="body" *ngFor="let details of vaccineadmin">
+            <mat-card-title>Vaccine Info</mat-card-title>
+            <form #EditVaccineAdmin="ngForm" class="form-grid">
+                <div class="form-container">
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="healthfacility">Health Facility</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Health Facility</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="healthfacility" required
+                                    name="healthfacility" #healthfacility="ngModel" [(ngModel)]="details.healthFacility">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="healthfacility.valid || healthfacility.pristine" class="alert alert-danger">
+                                Health Facility Name is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Vaccinator</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Vaccinator</mat-label>
+                                    <input matInput #vaccinator="ngModel" matInput class="ng-untouched ng-pristine ng-valid" 
+                                    name="vaccinator" id="vaccinator" placeholder="ex. Mike Dane" required [(ngModel)]="details.vaccinator">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="vaccinator.valid || vaccinator.pristine" class="alert alert-danger">
+                                Vaccinator is required!
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Address</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="address" required
+                                    name="address" #address="ngModel" [(ngModel)]="details.address">
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
+                                Address is required!
+                            </div>  
+                        </div>
+                        <div *ngIf="duplicateAdmin">
+                            <div class="alert alert-danger">Vaccine is already in the records! Choose another one</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button class="back" (click)="goBack()" mat-button color="warn" mat-raised-button>Back</button>
+                    <button class="save" (click)="save()" type="submit" *ngIf="EditVaccineAdmin.form.valid" mat-button color="primary" mat-raised-button>Save</button>
+                </div>
+            </form>
+          </mat-card>
+    </div>
+</div>
+
+

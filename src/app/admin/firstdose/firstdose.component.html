@@ -1,0 +1,94 @@
+<div class="main">
+    <div class="mat-elevation-z8" class="table-container">
+      <div class="upper-portion">
+        <div class="button-add">
+          <!--Add New Button-->
+          <a routerLink='add-first-dose'><button mat-button color="primary" mat-raised-button><mat-icon>data_saver_on</mat-icon> Get FirstDose</button></a>
+        </div>
+        <div class="export">
+          <a href="{{url}}"><button mat-button color="accent" mat-raised-button><mat-icon>get_app</mat-icon>Export PDF</button></a>
+        </div>
+        <div class="search">
+          <!--filter input-->
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Search...</mat-label>
+            <input matInput type="text" [(ngModel)]="value" (keyup)="filterData($event)" #input>
+            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <!--data source taken from API-->
+        <table id="firstdose" mat-table matSort [dataSource]="dataSource">
+
+          <!--Row For CustomID-->
+          <ng-container matColumnDef="customid">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{element.customid}}</td>
+          </ng-container>
+        
+          <!--Row For Firstname-->
+          <ng-container matColumnDef="firstname">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>First Name</th>
+            <td mat-cell *matCellDef="let element">{{element.firstname}}</td>
+          </ng-container>
+        
+          <!--Row For lastname-->
+          <ng-container matColumnDef="lastname">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Last Name</th>
+            <td mat-cell *matCellDef="let element">{{element.lastname}}</td>
+          </ng-container>
+        
+          <!--Row For category-->
+          <ng-container matColumnDef="category">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Category</th>
+            <td mat-cell *matCellDef="let element">{{element.category}}</td>
+          </ng-container>
+
+          <!--Row For Gender-->
+          <ng-container matColumnDef="gender">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Gender</th>
+            <td mat-cell *matCellDef="let element">{{element.gender}}</td>
+          </ng-container>
+
+          <!--Row For VaccineName-->
+          <ng-container matColumnDef="vaccinename">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Vaccine Brand</th>
+            <td mat-cell *matCellDef="let element">{{element.vaccineName}}</td>
+          </ng-container>
+
+          <!--Row For HealthFacility-->
+          <ng-container matColumnDef="healthfacility">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Health Facility</th>
+            <td mat-cell *matCellDef="let element">{{element.healthFacility}}</td>
+          </ng-container>
+
+          <!--Row For Date-->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element">{{element.date}}</td>
+          </ng-container>
+          <!--Row For Actions-->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element"><a routerLink="edit-first-dose/{{element.fdID}}"><button title="Edit" mat-button mat-raised-button><mat-icon color="primary">edit</mat-icon></button></a>
+                                                  <button (click)="deleteConfirm(element.fdID)" title="Delete" mat-button mat-raised-button><mat-icon color="warn">delete</mat-icon></button>
+                                                  <a ><button title="View" mat-button mat-raised-button><mat-icon color="accent">input</mat-icon></button></a>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+          <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+        <mat-paginator #paginator [pageSizeOptions]="[1, 10, 20]" [pageSize]="10" showFirstLastButtons>
+        </mat-paginator>
+      </div> 
+    </div>
+</div>

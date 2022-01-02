@@ -1,0 +1,81 @@
+<div class="main">
+    <div class="content-container">
+        <mat-card class="header">
+            <p class="header-left">Add Addmin<mat-icon>add_circle</mat-icon></p>
+            <p class="header-right">Rural Health Unit<mat-icon>local_hospital</mat-icon></p>
+        </mat-card>
+        <mat-card class="body">
+            <mat-card-title>Admin Account Info</mat-card-title>
+            <form #AddAdmin="ngForm" class="form-grid" (ngSubmit)="onSubmit(AddAdmin)">
+                <div class="form-container">
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>First Name</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="firstname" required
+                                    name="firstname" #firstname="ngModel" ngModel>
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
+                                First Name is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Last Name</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="lastname" required
+                                    name="lastname" #lastname="ngModel" ngModel>
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="lastname.valid || lastname.pristine" class="alert alert-danger">
+                                Last Name is required!
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="username">Userame</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Username</mat-label>
+                                    <input matInput class="ng-untouched ng-pristine ng-valid" id="username" required
+                                    name="username" #username="ngModel" ngModel>
+                                </mat-form-field>
+                            </div>
+                            <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                                Username is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Password</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'" class="ng-untouched ng-pristine ng-valid" id="password" required
+                                    name="password" #password="ngModel" ngModel>
+                                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div> 
+                            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                                Password is required!
+                            </div>  
+                        </div>
+                        <div *ngIf="duplicateUsername">
+                            <div class="alert alert-danger">Username is already taken! Choose another one</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button type="submit" *ngIf="AddAdmin.form.valid" mat-button color="primary" mat-raised-button>Register</button>
+                </div>
+            </form>
+          </mat-card>
+    </div>
+</div>
+

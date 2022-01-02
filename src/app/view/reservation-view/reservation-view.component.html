@@ -1,0 +1,63 @@
+<div class="main">
+    <div class="content-container">
+        <mat-card class="header">
+            <p class="header-left">Add Reservations<mat-icon>add_circle</mat-icon></p>
+            <p class="header-right">Rural Health Unit<mat-icon>local_hospital</mat-icon></p>
+        </mat-card>
+        <mat-card class="body">
+            <mat-card-title>Reservations</mat-card-title>
+            <form [formGroup]="AddReservations" class="form-grid" (ngSubmit)="onSubmit(AddReservations)">
+                <div class="form-container">
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>First Name</mat-label>
+                                    <input matInput id="firstname" required formControlName="firstname" name="firstname">
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="getControl.firstname.touched && getControl.firstname.invalid" class="alert alert-danger">
+                                First Name is required!
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Last Name</mat-label>
+                                    <input matInput id="lastname" required name="lastname" formControlName="lastname">
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="getControl.lastname.touched && getControl.lastname.invalid" class="alert alert-danger">
+                                Last Name is required!
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="field">
+                                <mat-form-field>
+                                    <mat-label>Email</mat-label>
+                                    <input matInput  id="email" required name="email" formControlName="email">
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="getControl.email.touched && getControl.email.invalid" class="alert alert-danger">
+                                Email is required or Invalid!
+                            </div>  
+                        </div>
+                        <div *ngIf="duplicateEmail">
+                            <div class="alert alert-danger">Email is already in the records! Choose another one</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button type="submit" *ngIf="AddReservations.valid" mat-button color="primary" mat-raised-button>Register</button>
+                </div>
+            </form>
+          </mat-card>
+    </div>
+</div>
+
+
