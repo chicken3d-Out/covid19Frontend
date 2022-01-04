@@ -72,8 +72,8 @@ export class RestApiService {
   }
 
   //Reservation API CALLS
-  URLSendEmail = "/api/sendemail/";
-  URLReservation = "/api/reservation/";
+  URLSendEmail = "https://covid19backend.000webhostapp.com/api/sendemail/";
+  URLReservation = "https://covid19backend.000webhostapp.com/api/reservation/";
   getAllReservation(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(`${this.URLReservation}read.php`);
   }
