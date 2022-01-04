@@ -12,7 +12,7 @@ import { AddAdmin } from './signin';
 export class RestApiService {
   constructor(private http: HttpClient, private router: Router) { }
   //Check if adminUser Exist
-  urlAdmin = "http://covid19backend.epizy.com/api/admin/";
+  urlAdmin = "https://covid19backend.000webhostapp.com/api/admin/";
   isAuthenticated = false;
   admin = false;
   //Get Admin Name
