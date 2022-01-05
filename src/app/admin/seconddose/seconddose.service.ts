@@ -14,7 +14,7 @@ export class SeconddoseService {
 
   constructor(private http: HttpClient, private restApiService: RestApiService) { }
   //Get all list of vaccine
-  urlSecondDose = "https://covid19backend.000webhostapp.com/api/seconddose/";
+  urlSecondDose = "/api/seconddose/";
 
   //GET Method for all Firstdose 
   getAllSecondDoseInfo(): Observable<SecondDose[]> {
@@ -56,7 +56,7 @@ export class SeconddoseService {
     return this.http.delete(`${this.urlSecondDose}delete.php?id=${id}`);
   }
 
-  url = 'https://covid19backend.000webhostapp.com/api/pdfConvert/';
+  url = '/api/pdfConvert/';
   admin = this.restApiService.adminName;
   export() {
     return this.http.get(`${this.url}pdfSeconddose.php?admin=${this.admin}`);

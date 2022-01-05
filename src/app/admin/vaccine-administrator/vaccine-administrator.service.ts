@@ -9,7 +9,7 @@ export class VaccineAdminServiceService {
 
   constructor(private http: HttpClient) { }
   //Get all list of vaccine
-  urlVaccineAdmin = "https://covid19backend.000webhostapp.com/api/vaccineadmin/";
+  urlVaccineAdmin = "/api/vaccineadmin/";
 
   //GET Method for all vaccine administrator
   getAllVaccineAdminInfo(): Observable<VaccineAdmin[]> {

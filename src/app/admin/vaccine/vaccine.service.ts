@@ -10,7 +10,7 @@ export class VaccineService {
 
   constructor(private http: HttpClient) { }
   //Get all list of vaccine
-  urlVaccine = "https://covid19backend.000webhostapp.com/api/vaccine/";
+  urlVaccine = "/api/vaccine/";
 
   //GET Method for all vaccine 
   getAllVaccineInfo(): Observable<Vaccine[]> {

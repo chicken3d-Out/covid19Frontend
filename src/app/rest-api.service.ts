@@ -12,7 +12,7 @@ import { AddAdmin } from './signin';
 export class RestApiService {
   constructor(private http: HttpClient, private router: Router) { }
   //Check if adminUser Exist
-  urlAdmin = "https://covid19backend.000webhostapp.com/api/admin/";
+  urlAdmin = "/api/admin/";
   isAuthenticated = false;
   admin = false;
   //Get Admin Name
@@ -72,8 +72,8 @@ export class RestApiService {
   }
 
   //Reservation API CALLS
-  URLSendEmail = "https://covid19backend.000webhostapp.com/api/sendemail/";
-  URLReservation = "https://covid19backend.000webhostapp.com/api/reservation/";
+  URLSendEmail = "/api/sendemail/";
+  URLReservation = "/api/reservation/";
   getAllReservation(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(`${this.URLReservation}read.php`);
   }

@@ -14,7 +14,7 @@ export class OverviewService {
 
   constructor(private http: HttpClient) { }
 
-  urlCharts = "https://covid19backend.000webhostapp.com/api/overview/";
+  urlCharts = "/api/overview/";
 
   //Get Vaccinated Per Day
   getVaccinatedPerDay(): Observable<VaccinatedPerDay[]> {

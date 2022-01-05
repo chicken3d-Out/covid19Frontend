@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://covid19backend.epizy.com",
+    "target": "https://covid19backend.000webhostapp.com",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"

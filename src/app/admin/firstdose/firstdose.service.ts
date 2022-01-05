@@ -14,7 +14,7 @@ export class FirstdoseService {
 
   constructor(private http: HttpClient, private restApiService: RestApiService) { }
   //Get all list of vaccine
-  urlFirstDose = "https://covid19backend.000webhostapp.com/api/firstdose/";
+  urlFirstDose = "/api/firstdose/";
 
   //GET Method for all Firstdose 
   getAllFirstdoseInfo(): Observable<FirstDose[]> {
@@ -55,7 +55,7 @@ export class FirstdoseService {
   deleteSelectedFirstdose(id: number) {
     return this.http.delete(`${this.urlFirstDose}delete.php?id=${id}`);
   }
-  url = 'https://covid19backend.000webhostapp.com/api/pdfConvert/';
+  url = '/api/pdfConvert/';
   admin = this.restApiService.adminName;
   export() {
     return this.http.get(`${this.url}pdfFirstdose.php?admin=${this.admin}`);

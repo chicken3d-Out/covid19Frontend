@@ -10,7 +10,7 @@ export class VaccineRecipientService {
 
   constructor(private http: HttpClient) { }
   //Get all list of vaccine recipient
-  urlRecipient = "https://covid19backend.000webhostapp.com/api/recipient/";
+  urlRecipient = "/api/recipient/";
 
   //GET Method for all vaccine recipient
   getAllRecipient(): Observable<Recipient[]> {
