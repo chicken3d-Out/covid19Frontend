@@ -1,0 +1,21 @@
+* {
+    font-family: Helvetica;
+}
+h1 { 
+    text-align:center; 
+    margin: 0 0 40px 0;
+    font-family: Helvetica;
+}
+.vaccinated-table{
+    font-family: Helvetica;
+    
+    
+    margin: 40px 0 0 0;
+    width: 100%;
+}
+.vaccinated-table td {
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+    border-color: #96D4D4;
+}
